@@ -1,0 +1,13 @@
+<h2>Title: <%= @article.title %></h2>
+ <% if @article.user %>
+    <li><%= link_to 'user', user_path(@article.user) %></li>
+    %= link_to @article.user.username, user_path(@article.user) %></li>
+    <%= pluralize(@article.user.articles.count, "article") if @article.user.articles %>
+ <% end %>
+ <h4>Description:</h4>
+ <%= simple_format(@article.description) %>
+ <%= link_to "Edit", edit_article_path(@article)%>
+ <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure you want to delete this article?"} %>
+ <%= link_to "Back", articles_path %>
+ </div>
+</div>
